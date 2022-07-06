@@ -1,3 +1,11 @@
+module "yaml" {
+    source  = "0x022b/yaml-variables/tfe"
+    version = "~> 1.0"
+
+    organization = "masihkasar-cloudflare-credentials"
+    workspace    = "credentials"
+}
+
 terraform {
     required_providers {
         cloudflare = {
@@ -8,14 +16,14 @@ terraform {
 }
 
 provider "cloudflare" {
-    email = var.email_id
-    api_token = var.api_token
+    email = module.yaml.variables.email_id
+    api_token = module.yaml.variables.api_token
 }
 
 resource "cloudflare_record" "www" {
-    zone_id = var.zone_id
+    zone_id = module.yaml.variables.zone_id
     name = "www"
-    value = var.ip_public
+    value = module.yaml.variables.ip_public
     type = "A"
     proxied = true
 }
