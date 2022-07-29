@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   mysql:
-    image: arm64v8/mysql:oracle #run for Arm Architecture
+    image: mysql:oracle #run for Arm Architecture
     volumes:
       - $HOME/developer/mysql:/var/lib/mysql
     ports:
