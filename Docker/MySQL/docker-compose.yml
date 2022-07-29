@@ -5,6 +5,6 @@ services:
     volumes:
       - $HOME/developer/mysql:/var/lib/mysql
     ports:
-      - 127.0.0.1:3306:3306
+      - *:3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=085283480788
